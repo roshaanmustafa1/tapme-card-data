@@ -1,0 +1,97 @@
+<template>
+  <div
+    class="namesection justify-content-center d-flex flex-column align-items-center my-2 px-5 text-center"
+  >
+    <div class="profile-img">
+      <b-img
+        :src="require('@/assets/images/ProfilePic.jpg')"
+        class="img-fluid"
+        rounded="circle"
+        alt="Circle image"
+      ></b-img>
+    </div>
+
+    <div class="name-field">
+      <h2>Roshaan Mustafa</h2>
+    </div>
+    <div class="short-description">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
+        molestiae.
+      </p>
+    </div>
+
+    <div class="contact-btns">
+      <div class="contact-icons">
+        <b-icon icon="phone" aria-hidden="true" scale="1.6"></b-icon>
+      </div>
+      <div class="contact-icons">
+        <b-icon icon="envelope" aria-hidden="true" scale="1.6"></b-icon>
+      </div>
+      <div class="contact-icons">
+        <b-icon icon="globe2" aria-hidden="true" scale="1.6"></b-icon>
+      </div>
+      <div class="contact-icons">
+        <b-icon icon="geo-alt" aria-hidden="true" scale="1.6"></b-icon>
+      </div>
+    </div>
+    <div class="edit-btn">
+      <edit-button
+        class="mt-4"
+        href="https://bootstrap-vue.org/docs/components/navbar"
+        btnbrownText="Edit button"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+import EditButton from "./EditButton.vue";
+export default {
+  components: { EditButton },
+};
+</script>
+
+<style lang="scss" scoped>
+.contact-btns .contact-icons {
+  padding: 0px 20px;
+  border: 2px solid;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c2c2c;
+  border-radius: 50%;
+}
+.contact-btns .contact-icons svg {
+  color: #eb8d2b;
+}
+.contact-btns .contact-icons:hover svg {
+  color: black !important;
+}
+
+.contact-btns .contact-icons:hover {
+  background: #eb8d2b;
+}
+
+.contact-btns {
+  display: flex;
+  column-gap: 15px;
+}
+
+.profile-img {
+  width: 110px;
+  //   box-shadow: 0px 0px 30px -1px rgba(235, 141, 43, 0.75) !important;
+  box-shadow: 0px 5px 13px 5px rgb(0 0 0 / 20%) !important;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+.namesection {
+  box-shadow: 0px 5px 15px 0px rgb(62 65 159 / 10%);
+  margin: 20px 20px !important;
+  padding: 40px 20px !important;
+  border-radius: 10px;
+}
+</style>
