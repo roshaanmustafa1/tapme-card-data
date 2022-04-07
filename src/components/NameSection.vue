@@ -23,16 +23,16 @@
 
     <div class="contact-btns">
       <div class="contact-icons">
-        <b-icon icon="phone" aria-hidden="true" scale="1.6"></b-icon>
+        <b-icon icon="telephone" aria-hidden="true" scale="1.2"></b-icon>
       </div>
       <div class="contact-icons">
-        <b-icon icon="envelope" aria-hidden="true" scale="1.6"></b-icon>
+        <b-icon icon="envelope" aria-hidden="true" scale="1.2"></b-icon>
       </div>
       <div class="contact-icons">
-        <b-icon icon="globe2" aria-hidden="true" scale="1.6"></b-icon>
+        <b-icon icon="globe2" aria-hidden="true" scale="1.2"></b-icon>
       </div>
       <div class="contact-icons">
-        <b-icon icon="geo-alt" aria-hidden="true" scale="1.6"></b-icon>
+        <b-icon icon="geo-alt" aria-hidden="true" scale="1.2"></b-icon>
       </div>
     </div>
     <div class="edit-btn">
@@ -54,10 +54,10 @@ export default {
 
 <style lang="scss" scoped>
 .contact-btns .contact-icons {
-  padding: 0px 20px;
+  padding: 0px 00px;
   border: 2px solid;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,9 +89,15 @@ export default {
 }
 
 .namesection {
-  box-shadow: 0px 5px 15px 0px rgb(62 65 159 / 10%);
-  margin: 20px 20px !important;
+  box-shadow: 0px 5px 15px 0px rgb(62 65 159 / 20%);
+  margin: 0px 20px !important;
   padding: 40px 20px !important;
   border-radius: 10px;
+  z-index: 10;
+  background-color: #f7f7f7;
+  border: 1px solid #8080802b;
+  h2 {
+    color: black;
+  }
 }
 </style>

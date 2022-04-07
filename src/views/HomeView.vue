@@ -16,3 +16,14 @@ export default {
   components: { NameSection, SocialLinkSection, FilesUpload },
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  background: url("@/assets/images/Lines.png");
+  background-size: cover;
+  height: auto;
+  padding-top: 20px;
+
+  background-position: center center;
+}
+</style>
