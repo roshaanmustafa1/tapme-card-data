@@ -13,20 +13,20 @@
         />
       </div>
       <div class="user-links col-12">
-        <black-btn
-          href="https://bootstrap-vue.org/docs/components/navbar"
-          btnText="Bank Details"
-        />
+        <black-btn btnText="Bank Details" v-b-modal.modal-center></black-btn>
+
+        <bank-details-popup v-b-modal.modal-center />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BankDetailsPopup from "./BankDetailsPopup.vue";
 import BlackBtn from "./BlackBtn.vue";
 import BrownBtn from "./BrownBtn.vue";
 export default {
-  components: { BlackBtn, BrownBtn },
+  components: { BlackBtn, BrownBtn, BankDetailsPopup },
 };
 </script>
 
@@ -41,5 +41,9 @@ export default {
 
 .upload-btns .user-links {
   padding: 5px 0px;
+}
+
+.bank-detail-disable {
+  display: none !important;
 }
 </style>

@@ -4,9 +4,18 @@
   >
     <div class="name-field">
       <h2>Contact With Us</h2>
+      <span class="horizontal-line"></span>
+
+      <div class="social-desc">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nesciunt
+          nobis exercitationem at. Non magnam autem dolores nihil quidem quam?
+        </p>
+      </div>
+      <span class="horizontal-line"></span>
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
       <div class="row social-l-box">
         <div class="col-12 social-li-cont-content">
           <div class="social-li-cont-icon fb">
@@ -18,19 +27,19 @@
           <div class="social-li-cont-icon insta">
             <a href=""><b-icon icon="instagram" aria-hidden="true"></b-icon></a>
           </div>
-          <a href="">Facebook</a>
+          <a href="">Instagram</a>
         </div>
         <div class="col-12 social-li-cont-content">
           <div class="social-li-cont-icon linkedin">
             <a href=""><b-icon icon="linkedin" aria-hidden="true"></b-icon></a>
           </div>
-          <a href="">Facebook</a>
+          <a href="">Linkedin</a>
         </div>
         <div class="col-12 social-li-cont-content">
           <div class="social-li-cont-icon twit">
             <a href=""><b-icon icon="twitter" aria-hidden="true"></b-icon></a>
           </div>
-          <a href="">Facebook</a>
+          <a href="">Twitter</a>
         </div>
       </div>
     </div>
@@ -65,6 +74,17 @@
   }
   .twit {
     background-color: #1d9bf0;
+  }
+}
+
+.name-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .horizontal-line {
+    width: 80%;
+    height: 1px;
+    background-color: #f7f7f7;
   }
 }
 
@@ -118,6 +138,11 @@
   background-color: #2c2c2c;
   transition: 0.2s all ease-in;
   a {
+    color: #f7f7f7;
+  }
+}
+.social-desc {
+  p {
     color: #f7f7f7;
   }
 }

@@ -14,12 +14,14 @@
     <div class="name-field">
       <h2>Roshaan Mustafa</h2>
     </div>
+    <span class="horizontal-line"></span>
     <div class="short-description">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
         molestiae.
       </p>
     </div>
+    <span class="horizontal-line"></span>
 
     <div class="contact-btns">
       <div class="contact-icons">
@@ -38,17 +40,20 @@
     <div class="edit-btn">
       <edit-button
         class="mt-4"
-        href="https://bootstrap-vue.org/docs/components/navbar"
         btnbrownText="Edit button"
-      />
+        v-b-modal.modalPopover
+      ></edit-button>
+
+      <edit-button-box></edit-button-box>
     </div>
   </div>
 </template>
 
 <script>
+import EditButtonBox from "@/components/EditButtonBox.vue";
 import EditButton from "./EditButton.vue";
 export default {
-  components: { EditButton },
+  components: { EditButton, EditButtonBox },
 };
 </script>
 
@@ -78,6 +83,7 @@ export default {
 .contact-btns {
   display: flex;
   column-gap: 15px;
+  margin-top: 20px;
 }
 
 .profile-img {
@@ -99,5 +105,14 @@ export default {
   h2 {
     color: black;
   }
+}
+.horizontal-line {
+  width: 80%;
+  height: 1px;
+  background-color: #000000;
+}
+
+.editbutton-disable {
+  display: none !important;
 }
 </style>

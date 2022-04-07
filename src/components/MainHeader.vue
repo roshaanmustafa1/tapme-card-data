@@ -2,22 +2,35 @@
   <div class="mainheader py-3">
     <div class="container">
       <div class="row">
-        <div class="col-6 align-items-center d-flex">
+        <div class="col-4 align-items-center d-flex justify-content-start">
+          <b-nav-item class="side-bar"><side-bar></side-bar> </b-nav-item>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-center">
           <a href=""
             ><img
-              :src="require('@/assets/images/logobrown.png')"
+              :src="require('@/assets/images/BlackOrange.png')"
               class="img-fluid"
               alt="logo"
           /></a>
         </div>
-        <div class="col-6 text-end">
+        <div
+          class="col-4 text-end d-flex align-items-center justify-content-end"
+        >
           <b-button variant="outline-warning" size="sm">Logout</b-button>
           <!-- <BaseButtonBlack /> -->
         </div>
       </div>
     </div>
+    <div class="side-cart-btn"><side-bar></side-bar></div>
   </div>
 </template>
+
+<script>
+import SideBar from "@/components/SideBar";
+export default {
+  components: { SideBar },
+};
+</script>
 
 <style lang="scss" scoped>
 .mainheader {
@@ -36,6 +49,20 @@
 .img-fluid {
   max-width: 100%;
   height: auto;
-  width: 60px;
+  width: 80px;
+}
+
+.side-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainheader .nav-link {
+  padding: 0;
+}
+
+.side-cart-btn {
+  display: none !important;
 }
 </style>
