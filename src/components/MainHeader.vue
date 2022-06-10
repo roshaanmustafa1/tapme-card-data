@@ -16,7 +16,10 @@
         <div
           class="col-4 text-end d-flex align-items-center justify-content-end"
         >
-          <b-button variant="outline-warning" size="sm">Logout</b-button>
+          <router-link to="/" v-if="!user.displayName">
+            <b-button variant="outline-warning" size="sm">Login</b-button>
+          </router-link>
+          <b-button variant="outline-warning" v-else size="sm">Logout</b-button>
           <!-- <BaseButtonBlack /> -->
         </div>
       </div>
@@ -26,10 +29,28 @@
 </template>
 
 <script>
-import SideBar from "@/components/SideBar";
+import SideBar from '@/components/SideBar'
+import { mapState } from 'vuex'
+import { getAuth, signOut } from 'firebase/auth'
 export default {
   components: { SideBar },
-};
+  computed: {
+    ...mapState(['user']),
+  },
+  methods: {
+    logout() {
+      const auth = getAuth()
+      signOut(auth)
+        .then(() => {
+          this.$store.dispatch('updateUser', {})
+          this.$toast.success('Success', 'Logout Successfully')
+        })
+        .catch((error) => {
+          this.$toast.error(error.message)
+        })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

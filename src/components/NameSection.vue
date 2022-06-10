@@ -4,7 +4,7 @@
   >
     <div class="profile-img">
       <b-img
-        :src="require('@/assets/images/ProfilePic.jpg')"
+        :src="userProfile.avatar"
         class="img-fluid"
         rounded="circle"
         alt="Circle image"
@@ -12,13 +12,12 @@
     </div>
 
     <div class="name-field">
-      <h2>Roshaan Mustafa</h2>
+      <h2>{{ userProfile.displayName }}</h2>
     </div>
     <span class="horizontal-line"></span>
     <div class="short-description">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
-        molestiae.
+        {{ userProfile.desc }}
       </p>
     </div>
     <span class="horizontal-line"></span>
@@ -50,11 +49,15 @@
 </template>
 
 <script>
-import EditButtonBox from "@/components/EditButtonBox.vue";
-import EditButton from "./EditButton.vue";
+import EditButtonBox from '@/components/EditButtonBox.vue'
+import EditButton from './EditButton.vue'
+import { mapState } from 'vuex'
 export default {
   components: { EditButton, EditButtonBox },
-};
+  computed: {
+    ...mapState(['userProfile']),
+  },
+}
 </script>
 
 <style lang="scss" scoped>
