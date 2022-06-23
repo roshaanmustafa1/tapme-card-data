@@ -3,31 +3,42 @@
     class="social-links-main justify-content-center d-flex flex-column align-items-center my-2 px-5 text-center"
   >
     <div class="name-field">
-      <h2>Contact With Us</h2>
+      <h2 class="text-black">My Documents</h2>
     </div>
     <div class="upload-btns">
       <div class="user-links col-12">
         <brown-btn
-          href="https://bootstrap-vue.org/docs/components/navbar"
-          btnbrownText="My Resume"
-        />
-      </div>
-      <div class="user-links col-12">
-        <black-btn btnText="Bank Details" v-b-modal.modal-center></black-btn>
-
-        <bank-details-popup v-b-modal.modal-center />
+          v-if="authStatus"
+          btnbrownText="Upload New File"
+          customStyle="mb-2 px-4"
+          v-b-modal.file-upload-modal
+        ></brown-btn>
+        <div v-for="(file, i) in userProfile.userFiles" :key="i">
+          <a
+            :href="file.link"
+            target="_blank"
+            class="text-dark uploaded_file"
+            download="something"
+          >
+            {{ file.title }}
+          </a>
+        </div>
+        <bank-details-popup />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BankDetailsPopup from "./BankDetailsPopup.vue";
-import BlackBtn from "./BlackBtn.vue";
-import BrownBtn from "./BrownBtn.vue";
+import BankDetailsPopup from './BankDetailsPopup.vue'
+import BrownBtn from './BrownBtn.vue'
+import { mapState } from 'vuex'
 export default {
-  components: { BlackBtn, BrownBtn, BankDetailsPopup },
-};
+  components: { BrownBtn, BankDetailsPopup },
+  computed: {
+    ...mapState(['userProfile', 'authStatus']),
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,11 +50,24 @@ export default {
   background: #f7f7f7;
 }
 
+.upload-btns {
+  width: 80%;
+}
 .upload-btns .user-links {
   padding: 5px 0px;
 }
 
 .bank-detail-disable {
   display: none !important;
+}
+.uploaded_file {
+  text-decoration: none;
+  border: 1px solid;
+  padding: 5px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
 }
 </style>

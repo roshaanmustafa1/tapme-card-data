@@ -12,7 +12,9 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "vue-toastification/dist/index.css";
 import "./style.scss";
 
-const options = {};
+const options = {
+  timeout: 2000,
+};
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5yyPo05z6tGphdXj3grGsmxhiH-jxQyc",

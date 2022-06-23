@@ -2,17 +2,21 @@
   <div
     class="namesection justify-content-center d-flex flex-column align-items-center my-2 px-5 text-center"
   >
-    <div class="profile-img">
-      <b-img
+    <div class="profile-img d-flex align-items-center">
+      <div
+        class="profileImage"
+        :style="{ backgroundImage: ` url(${userProfile.avatar})` }"
+      ></div>
+      <!-- <b-img
         :src="userProfile.avatar"
         class="img-fluid"
         rounded="circle"
-        alt="Circle image"
-      ></b-img>
+        alt="User Profile"
+      ></b-img> -->
     </div>
 
     <div class="name-field">
-      <h2>{{ userProfile.displayName }}</h2>
+      <h2 class="text-capitalize">{{ userProfile.displayName }}</h2>
     </div>
     <span class="horizontal-line"></span>
     <div class="short-description">
@@ -24,36 +28,22 @@
 
     <div class="contact-btns">
       <div class="contact-icons">
-        <b-icon icon="telephone" aria-hidden="true" scale="1.2"></b-icon>
+        <a :href="`tel:${userProfile.phone}`">
+          <b-icon icon="telephone" aria-hidden="true" scale="1.2"> </b-icon
+        ></a>
       </div>
       <div class="contact-icons">
-        <b-icon icon="envelope" aria-hidden="true" scale="1.2"></b-icon>
+        <a :href="`mailto:${userProfile.email}`">
+          <b-icon icon="envelope" aria-hidden="true" scale="1.2"></b-icon>
+        </a>
       </div>
-      <div class="contact-icons">
-        <b-icon icon="globe2" aria-hidden="true" scale="1.2"></b-icon>
-      </div>
-      <div class="contact-icons">
-        <b-icon icon="geo-alt" aria-hidden="true" scale="1.2"></b-icon>
-      </div>
-    </div>
-    <div class="edit-btn">
-      <edit-button
-        class="mt-4"
-        btnbrownText="Edit button"
-        v-b-modal.modalPopover
-      ></edit-button>
-
-      <edit-button-box></edit-button-box>
     </div>
   </div>
 </template>
 
 <script>
-import EditButtonBox from '@/components/EditButtonBox.vue'
-import EditButton from './EditButton.vue'
 import { mapState } from 'vuex'
 export default {
-  components: { EditButton, EditButtonBox },
   computed: {
     ...mapState(['userProfile']),
   },
@@ -91,6 +81,9 @@ export default {
 
 .profile-img {
   width: 110px;
+  min-width: 110px;
+  min-height: 110px;
+  background: rgb(243, 243, 243);
   //   box-shadow: 0px 0px 30px -1px rgba(235, 141, 43, 0.75) !important;
   box-shadow: 0px 5px 13px 5px rgb(0 0 0 / 20%) !important;
   border-radius: 50%;
@@ -117,5 +110,15 @@ export default {
 
 .editbutton-disable {
   display: none !important;
+}
+
+.profileImage {
+  height: 110px;
+  width: 110px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  background-position: center;
+  overflow: hidden;
 }
 </style>

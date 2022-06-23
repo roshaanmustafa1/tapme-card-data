@@ -1,17 +1,20 @@
 <template>
   <div>
-    <a class="btn btn1" block :href="href">{{ btnbrownText }}</a>
+    <a class="btn btn1" :class="styles" block :href="href">{{
+      btnbrownText
+    }}</a>
   </div>
 </template>
 <script>
 export default {
-  props: ["btnbrownText", "href"],
-};
+  props: ['btnbrownText', 'href', 'styles'],
+}
 </script>
 <style scoped>
 .btn {
   border: 1px solid #eb8d2b;
   background: none;
+  white-space: nowrap;
   padding: 8px 110px;
   font-size: 14px;
   font-family: var(--font-primary);
@@ -31,7 +34,7 @@ export default {
 }
 
 .btn::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0%;
   width: 100%;

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <a class="btn btn1" :href="href">{{ btnbrownText }}</a>
+    <a class="btn btn1" :class="customStyle" :href="href">{{ btnbrownText }}</a>
   </div>
 </template>
 <script>
 export default {
-  props: ["btnbrownText", "href"],
-};
+  props: ['btnbrownText', 'href', 'customStyle'],
+}
 </script>
 <style scoped>
 .btn {
@@ -31,7 +31,7 @@ export default {
 }
 
 .btn::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0%;
   width: 100%;

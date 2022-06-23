@@ -2,10 +2,7 @@
   <div class="mainheader py-3">
     <div class="container">
       <div class="row">
-        <div class="col-4 align-items-center d-flex justify-content-start">
-          <b-nav-item class="side-bar"><side-bar></side-bar> </b-nav-item>
-        </div>
-        <div class="col-4 d-flex align-items-center justify-content-center">
+        <div class="col-8 d-flex align-items-center">
           <a href=""
             ><img
               :src="require('@/assets/images/BlackOrange.png')"
@@ -16,26 +13,25 @@
         <div
           class="col-4 text-end d-flex align-items-center justify-content-end"
         >
-          <router-link to="/" v-if="!user.displayName">
+          <router-link to="/" v-if="!authStatus">
             <b-button variant="outline-warning" size="sm">Login</b-button>
           </router-link>
-          <b-button variant="outline-warning" v-else size="sm">Logout</b-button>
+          <b-button variant="outline-warning" v-else size="sm" @click="logout()"
+            >Logout</b-button
+          >
           <!-- <BaseButtonBlack /> -->
         </div>
       </div>
     </div>
-    <div class="side-cart-btn"><side-bar></side-bar></div>
   </div>
 </template>
 
 <script>
-import SideBar from '@/components/SideBar'
 import { mapState } from 'vuex'
 import { getAuth, signOut } from 'firebase/auth'
 export default {
-  components: { SideBar },
   computed: {
-    ...mapState(['user']),
+    ...mapState(['user', 'authStatus']),
   },
   methods: {
     logout() {

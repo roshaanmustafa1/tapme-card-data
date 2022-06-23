@@ -66,6 +66,8 @@ export default {
             displayName: user.displayName,
             uid: user.uid,
             email: user.email,
+            userLinks: [],
+            userFiles: [],
           }).then(() => {
             this.$router.push(`/profile/${user.uid}`)
           })
