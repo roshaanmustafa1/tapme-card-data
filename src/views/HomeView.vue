@@ -5,7 +5,7 @@
     spinner-variant="warning"
     opacity="1"
   >
-    <div class="home">
+    <div class="home position-relative">
       <name-section></name-section>
       <social-link-section
         v-if="userProfile.userLinks.length > 0 || authStatus"
@@ -13,6 +13,14 @@
       <files-upload
         v-if="userProfile.userFiles.length > 0 || authStatus"
       ></files-upload>
+      <b-button
+        class="addToContactBtn"
+        variant="dark"
+        squared
+        block
+        @click="getVCard"
+        >Add To Contact</b-button
+      >
     </div>
   </b-overlay>
 </template>
@@ -43,6 +51,18 @@ export default {
         this.showLoader = false
       })
     },
+    getVCard() {
+      let vCard = `BEGIN:VCARD\nVERSION:4.0\nFN:${this.userProfile.displayName}\nEMAIL:${this.userProfile.email}\nTEL:${this.userProfile.phone}\nURL;type=pref:http://localhost:8080/profile/${this.userProfile.uid}\nEND:VCARD`
+      console.log(vCard)
+      const element = document.createElement('a')
+      const file = new Blob([vCard], {
+        type: 'text/plain',
+      })
+      element.href = URL.createObjectURL(file)
+      element.download = 'myFile.vcf'
+      document.body.appendChild(element)
+      element.click()
+    },
   },
   watch: {
     loader(oldVal, newVal) {
@@ -63,7 +83,15 @@ export default {
   background-size: cover;
   min-height: 100vh;
   padding-top: 20px;
-  padding-bottom: 20px;
   background-position: center center;
+}
+
+.addToContactBtn {
+  position: sticky;
+  width: 100%;
+  padding: 15px 0;
+  bottom: 0;
+  border: 0 !important;
+  background: #eb8d2b !important;
 }
 </style>
