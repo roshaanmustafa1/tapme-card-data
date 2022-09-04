@@ -10,6 +10,9 @@
           v-model="profilePic"
         />
       </b-form-group>
+      <b-form-group label="Full Name*" label-for="name" class="mt-3">
+        <b-form-input id="name" v-model="name" />
+      </b-form-group>
       <b-form-group label="Phone Number*" label-for="phoneNumber" class="mt-3">
         <b-form-input id="phoneNumber" v-model="phoneNumber" />
       </b-form-group>
@@ -43,6 +46,7 @@ export default {
       phoneNumber: null,
       description: null,
       email: null,
+      name: null,
     };
   },
   computed: { ...mapState(["userProfile", "user"]) },
@@ -86,11 +90,14 @@ export default {
                 : this.userProfile.phone;
             let updatedEmail =
               this.email !== null ? this.email : this.userProfile.email;
+            let updatedName =
+              this.name !== null ? this.name : this.userProfile.displayName;
             updateDoc(doc(this.$db, "users", user.uid), {
               avatar: updatedImage,
               desc: updatedDesc,
               phone: updatedPhone,
               email: updatedEmail,
+              displayName: updatedName,
             })
               .then(() => {
                 this.profilePic = null;
