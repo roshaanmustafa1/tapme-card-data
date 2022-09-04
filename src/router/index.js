@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import CompleteProfile from "../views/CompleteProfile.vue";
+import UpdateProfile from "../views/UpdateProfile.vue";
 import SignupView from "../views/SignupView.vue";
 // import store from "../store";
 
@@ -29,6 +30,11 @@ const routes = [
     path: "/complete-profile",
     name: "Complete Profile",
     component: CompleteProfile,
+  },
+  {
+    path: "/update-profile",
+    name: "Update Profile",
+    component: UpdateProfile,
   },
 ];
 

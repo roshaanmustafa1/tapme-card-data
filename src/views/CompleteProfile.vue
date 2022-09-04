@@ -29,37 +29,33 @@
   </div>
 </template>
 <script>
-import { getAuth } from 'firebase/auth'
-import { setDoc, doc } from 'firebase/firestore'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { getAuth } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default {
   data() {
     return {
       profilePic: null,
       phoneNumber: null,
       description: null,
-    }
+    };
   },
   methods: {
     uploadProfile() {
-      const auth = getAuth()
-      const user = auth.currentUser
-      const storage = getStorage()
-      let imgUrl = ''
-      const storageRef = ref(storage, `profile/${user.uid}`)
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const storage = getStorage();
+      let imgUrl = "";
+      const storageRef = ref(storage, `profile/${user.uid}`);
       uploadBytes(storageRef, this.profilePic).then(() => {
         getDownloadURL(ref(storage, `profile/${user.uid}`)).then((url) => {
-          const xhr = new XMLHttpRequest()
-          xhr.responseType = 'blob'
-          // xhr.onload = () => {
-          //   const blob = xhr.response
-          //   console.log(blob, 'blob')
-          // }
-          xhr.open('GET', url)
-          xhr.send()
-          imgUrl = url
+          const xhr = new XMLHttpRequest();
+          xhr.responseType = "blob";
+          xhr.open("GET", url);
+          xhr.send();
+          imgUrl = url;
 
-          const docRef = setDoc(doc(this.$db, 'users', user.uid), {
+          const docRef = setDoc(doc(this.$db, "users", user.uid), {
             avatar: imgUrl,
             desc: this.description,
             phone: this.phoneNumber,
@@ -69,13 +65,13 @@ export default {
             userLinks: [],
             userFiles: [],
           }).then(() => {
-            this.$router.push(`/profile/${user.uid}`)
-          })
+            this.$router.push(`/profile/${user.uid}`);
+          });
 
-          console.log(docRef, 'it is working@888')
-        })
-      })
+          console.log(docRef, user, "it is working@888");
+        });
+      });
     },
   },
-}
+};
 </script>

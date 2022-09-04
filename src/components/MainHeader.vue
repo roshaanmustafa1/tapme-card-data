@@ -2,7 +2,7 @@
   <div class="mainheader py-3">
     <div class="container">
       <div class="row">
-        <div class="col-8 d-flex align-items-center">
+        <div class="col-6 d-flex align-items-center">
           <a href=""
             ><img
               :src="require('@/assets/images/BlackOrange.png')"
@@ -11,14 +11,25 @@
           /></a>
         </div>
         <div
-          class="col-4 text-end d-flex align-items-center justify-content-end"
+          class="col-6 text-end d-flex align-items-center justify-content-end"
         >
           <router-link to="/" v-if="!authStatus">
             <b-button variant="outline-warning" size="sm">Login</b-button>
           </router-link>
-          <b-button variant="outline-warning" v-else size="sm" @click="logout()"
-            >Logout</b-button
-          >
+          <div v-else class="d-flex align-items-center">
+            <router-link to="/update-profile" class="me-2">
+              <b-button
+                variant="outline-warning"
+                size="sm"
+                style="white-wrap: nowrap"
+                >Edit Profile</b-button
+              >
+            </router-link>
+            <b-button variant="outline-warning" size="sm" @click="logout()"
+              >Logout</b-button
+            >
+          </div>
+
           <!-- <BaseButtonBlack /> -->
         </div>
       </div>
@@ -27,26 +38,26 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { getAuth, signOut } from 'firebase/auth'
+import { mapState } from "vuex";
+import { getAuth, signOut } from "firebase/auth";
 export default {
   computed: {
-    ...mapState(['user', 'authStatus']),
+    ...mapState(["user", "authStatus"]),
   },
   methods: {
     logout() {
-      const auth = getAuth()
+      const auth = getAuth();
       signOut(auth)
         .then(() => {
-          this.$store.dispatch('updateUser', {})
-          this.$toast.success('Success', 'Logout Successfully')
+          this.$store.dispatch("updateUser", {});
+          this.$toast.success("Success", "Logout Successfully");
         })
         .catch((error) => {
-          this.$toast.error(error.message)
-        })
+          this.$toast.error(error.message);
+        });
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
